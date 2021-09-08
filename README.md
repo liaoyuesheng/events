@@ -1,6 +1,8 @@
 # @liaoys/events
 
-An event emitter
+An event emitter.
+
+See [example](https://liaoyuesheng.github.io/events/)
 
 ## Installation
 ```
