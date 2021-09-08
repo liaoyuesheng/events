@@ -9,7 +9,7 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      file: './example/events.esm.js',
+      file: './docs/events.esm.js',
       format: 'esm',
       name: 'Events',
       sourcemap: true,
@@ -21,12 +21,12 @@ export default {
     typescript(),
     commonjs(),
     livereload({
-      watch: './example',
+      watch: './docs',
     }),
     serve({
       open: true,
       port: 8000,
-      contentBase: ['example'],
+      contentBase: ['docs'],
       openPage: '/index.html',
     })
   ],

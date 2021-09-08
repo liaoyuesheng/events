@@ -45,5 +45,19 @@ export default [
       commonjs(),
       terser()
     ],
+  },
+  {
+    input: 'src/index.ts',
+    output: {
+      file: './docs/events.esm.js',
+      format: 'esm',
+      sourcemap: true,
+    },
+    plugins: [
+      eslint(),
+      resolve(),
+      typescript(),
+      commonjs()
+    ],
   }
 ]
