@@ -1,5 +1,5 @@
 {
-  "name": "@liaoys/rollup-test",
+  "name": "@liaoys/events",
   "version": "1.0.0",
   "description": "An event emitter",
   "author": "liaoys",
