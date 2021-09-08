@@ -27,11 +27,11 @@ event.once('foo', () => {
 event.emit('foo', 'Hi!')
 ```
 
-## type Listener
+## type: Listener
 
 (...args: any[]) => void;
 
-A callback function, accept some parameters from method of instance.
+A callback function, accept some parameters from emmit method of instance.
 
 ## Instance methods
 
