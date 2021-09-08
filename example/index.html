@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>events example</title>
+</head>
+<body>
+<div class="sky">
+    <div class="sky-center" data-weather="sunny">
+        <div class="sunny">
+            <span class="sunshine"></span>
+            <span class="sunshine"></span>
+            <span class="sunshine"></span>
+            <span class="sunshine"></span>
+            <span class="sunshine"></span>
+            <span class="sunshine"></span>
+        </div>
+        <div class="rainy">
+            <div class="cloud-part1"></div>
+            <div class="cloud-part2"></div>
+            <div class="cloud-part3"></div>
+            <div class="raindrop raindrop-1"></div>
+            <div class="raindrop raindrop-2"></div>
+            <div class="raindrop raindrop-3"></div>
+        </div>
+    </div>
+</div>
+<div class="ground">
+    <div class="umbrella">
+        <div class="umbrella-top"></div>
+        <div class="umbrella-pole"></div>
+        <div class="umbrella-handle">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<div class="commentary"></div>
+<pre><code class="language-javascript"></code></pre>
+
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/vs.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+<script src="events.esm.js" type="module"></script>
+
+<script id="demo-script" type="module">
+import Events from './events.esm.js'
+
+// weatherEvent
+const weatherEvent = new Events()
+const elWeather = document.querySelector('.sky-center')
+let weatherType = 'sunny'
+
+setInterval(() => {
+  const newWeatherType = Math.random() > 0.5 ? 'sunny' : 'rainy'
+
+  if (weatherType !== newWeatherType) {
+    weatherType = newWeatherType
+    elWeather.setAttribute('data-weather', newWeatherType)
+    weatherEvent.emit('change', newWeatherType);
+  }
+}, 1500);
+
+
+// umbrella
+const elUmbrella = document.querySelector('.umbrella');
+
+weatherEvent.on('change', (weatherType) => {
+  elUmbrella.classList.toggle('opened', weatherType === 'rainy')
+});
+
+
+// commentary
+const elCommentary = document.querySelector('.commentary')
+
+weatherEvent.on('change', (weatherType) => {
+  elCommentary.textContent = `The weather has changed. It's ${weatherType} now.`
+});
+</script>
+<script>
+document.querySelector('.language-javascript').textContent = document.querySelector('#demo-script').textContent
+hljs.highlightAll()
+</script>
+</body>
+</html>
