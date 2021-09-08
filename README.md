@@ -31,7 +31,7 @@ event.emit('foo', 'Hi!')
 
 (...args: any[]) => void;
 
-A callback function, accept some parameters from emmit method of instance.
+A callback function, accept some parameters from emit method of instance.
 
 ## Instance methods
 
@@ -57,7 +57,7 @@ If without the parameter `listener`, will remove all the listeners from the list
 
 Add an event listener, and it will be invoked only once.
 
-### emmit(eventName, ...args: any[]): boolean
+### emit(eventName, ...args: any[]): boolean
 - `eventName`  The name of the event
 - `args` Parameters passed to listener.
 
